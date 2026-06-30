@@ -6,6 +6,15 @@ from src.preprocessing.pipeline import (
     build_full_pipeline
 )
 
+from src.models.linear_regression import (
+    train_linear_regression,
+    predict
+)
+
+from src.models.evaluation import (
+    calculate_rmse
+)
+
 # Load dataset
 housing = load_housing_data()
 
@@ -25,5 +34,25 @@ housing_prepared = preprocessing_pipeline.fit_transform(
     housing_features
 )
 
-print(housing_prepared.shape)
-print(housing_labels.shape)
+# train model
+model = train_linear_regression(
+    housing_prepared,
+    housing_labels
+)
+
+# predict on training set
+predictions = predict(
+    model,
+    housing_prepared
+)
+
+# evaluate 
+rmse = calculate_rmse(
+    housing_labels,
+    predictions
+)
+
+print(f"RMSE: {rmse:.2f}")
+
+# print(housing_prepared.shape)
+# print(housing_labels.shape)
