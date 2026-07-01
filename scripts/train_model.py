@@ -10,7 +10,10 @@ from src.models.linear_regression import (
     train_linear_regression,
     predict
 )
-
+from src.models.decision_tree import (
+    train_decision_tree,
+    predict
+)
 from src.models.evaluation import (
     evaluate_model,
     display_scores
@@ -36,7 +39,7 @@ housing_prepared = preprocessing_pipeline.fit_transform(
 )
 
 # train model
-model = train_linear_regression(
+model = train_decision_tree(
     housing_prepared,
     housing_labels
 )
