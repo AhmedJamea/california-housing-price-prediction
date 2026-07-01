@@ -12,7 +12,8 @@ from src.models.linear_regression import (
 )
 
 from src.models.evaluation import (
-    calculate_rmse
+    evaluate_model,
+    display_scores
 )
 
 # Load dataset
@@ -47,12 +48,13 @@ predictions = predict(
 )
 
 # evaluate 
-rmse = calculate_rmse(
-    housing_labels,
-    predictions
+scores = evaluate_model(
+    model,
+    housing_prepared,
+    housing_labels
 )
 
-print(f"RMSE: {rmse:.2f}")
+display_scores(scores)
 
 # print(housing_prepared.shape)
 # print(housing_labels.shape)
