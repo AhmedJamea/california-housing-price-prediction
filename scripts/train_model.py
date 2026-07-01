@@ -6,14 +6,11 @@ from src.preprocessing.pipeline import (
     build_full_pipeline
 )
 
-from src.models.linear_regression import (
-    train_linear_regression,
+from src.models.random_forest import (
+    train_random_forest,
     predict
 )
-from src.models.decision_tree import (
-    train_decision_tree,
-    predict
-)
+
 from src.models.evaluation import (
     evaluate_model,
     display_scores
@@ -39,7 +36,7 @@ housing_prepared = preprocessing_pipeline.fit_transform(
 )
 
 # train model
-model = train_decision_tree(
+model = train_random_forest(
     housing_prepared,
     housing_labels
 )
