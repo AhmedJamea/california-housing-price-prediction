@@ -6,10 +6,8 @@ from src.preprocessing.pipeline import (
     build_full_pipeline
 )
 
-from src.models.random_forest import (
-    train_random_forest,
-    predict
-)
+from src.models.factory import create_model
+from src.models.trainer import train_model, predict
 
 from src.models.evaluation import (
     evaluate_model,
@@ -35,8 +33,12 @@ housing_prepared = preprocessing_pipeline.fit_transform(
     housing_features
 )
 
+# choose model
+model = create_model("random_forest")
+
 # train model
-model = train_random_forest(
+model = train_model(
+    model,
     housing_prepared,
     housing_labels
 )
@@ -55,6 +57,3 @@ scores = evaluate_model(
 )
 
 display_scores(scores)
-
-# print(housing_prepared.shape)
-# print(housing_labels.shape)
