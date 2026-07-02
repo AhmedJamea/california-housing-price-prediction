@@ -2,11 +2,11 @@ from sklearn.model_selection import cross_val_score
 import numpy as np
 
 
-def evaluate_model(model, X_train, y_train, cv=10):
+def evaluate_model(model, features, lables, cv=10):
     scores = cross_val_score(
         model,
-        X_train,
-        y_train,
+        features,
+        lables,
         scoring="neg_mean_squared_error",
         cv=cv
     )
