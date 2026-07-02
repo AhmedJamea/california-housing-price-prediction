@@ -34,7 +34,7 @@ housing_prepared = preprocessing_pipeline.fit_transform(
 )
 
 # choose model
-model = create_model("random_forest")
+model = create_model("support_vector_regression")
 
 # train model
 model = train_model(
